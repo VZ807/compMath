@@ -1,0 +1,278 @@
+\documentclass[addpoints,12pt]{exam}
+
+\usepackage{amsmath, amsfonts, amssymb}
+
+% --- Header and Footer Setup ---
+\pagestyle{headandfoot}
+\firstpageheader{Comp Math}{Second Homework}{September 16, 2026}
+\runningheader{Comp Math}{First Homework, Page \thepage\ of \numpages}{}
+\firstpagefooter{}{}{}
+\runningfooter{}{}{Page \thepage}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Large Homework \#2} \\
+    \vspace{0.1in}
+    \textbf{\large Logic}
+\end{center}
+
+\vspace{0.3in}
+
+\begin{questions}
+
+% Q1
+\question Analyze the logical forms of the following statements.
+\begin{parts}
+    \part Either John and Bill are both telling the truth, or neither of them is.
+    \vspace{.1 in}
+
+    let: 
+
+    $J =$ John
+
+    $B =$ Bill
+
+    The logical form can be written out as: $(J \land B) \vee (\lnot J \land \lnot B) $
+
+    \part I’ll have either fish or chicken, but I won’t have both fish and mashed potatoes.
+    \vspace{.1 in}
+
+    let: 
+
+    $F =$ Fish
+
+    $C =$ Chicken
+
+    $M =$ Mashed Potatoes 
+
+    The logical form can be written out as: $(F \vee C) \land \lnot(F \land M)$
+
+    \part 3 is a common divisor of 6, 9, and 15
+    \vspace{.1 in}
+
+    The logical form can be written out as: $6,9,15 \in \{x | x \% 3 = 0\}$
+
+\end{parts}
+
+
+% Q2
+\question Which of the following expressions are well-formed formulas?
+
+\begin{parts}
+\part $\lnot (\lnot P \land \lnot\lnot R)$, is well formed. While the double $\lnot$ is somewhat irksome its still correct 
+
+\part $\lnot(P, Q, \vee R)$ No, as the commas make it not proper "Syntax" 
+
+\part $P \land \lnot P$ Well formed, as it is clear and not ambigious. Unless parenthesis are required.
+
+\part $(P \land Q)(P \vee R)$ Not well formed.
+\end{parts}
+
+\question Let T stand for the statement “Taxes will go up” and D for “The
+deficit will go up.” What English sentences are represented by the
+following formulas?
+
+\begin{parts}
+    \part $T \vee D$: Taxes will go up or The deficit will go up
+    \part $¬(T \land D) \land \lnot(\lnot T \land \lnot D)$: 
+    
+    Taxes and Decificit will go up and Taxes and Deficit will both not not go up. 
+    \part $(T \land \lnot D) \vee (D \land \lnot T)$:  
+
+    Taxes and will go up and Deficit won't or Deficit will go up and Taxes wont. 
+\end{parts}
+
+\question Identify the premises and conclusions of the following deductive
+arguments and analyze their logical forms. Do you think the reasoning
+is valid? (Although you will have only your intuition to guide you in
+answering this last question, in the next section we will develop some
+techniques for determining the validity of arguments.)
+\begin{parts}
+    \part The main course will be either beef or fish. The vegetable will be
+    either peas or corn. We will not have both fish as a main course and
+    corn as a vegetable. Therefore, we will not have both beef as a main
+    course and peas as a vegetable.
+    \vspace{.1 in}
+
+    False, as Beef and Peas are unconstrainted and are able to be a pair without a contradiction on the Fish and Corn constraint
+
+    \part Either John or Bill is telling the truth. Either Sam or Bill is lying.
+          Therefore, either John is telling the truth or Sam is lying.
+
+    \vspace{.1 in}
+    This is true, if John is true then it Makes Bill false and forces Sam to true, and When John is false, a similar chian of resoning makes Sam False 
+
+
+\end{parts}
+
+\large 1.2 Exersices 
+\small
+
+\question Make truth tables for the following formulas: 
+\begin{parts}
+    \part  $ \lnot [P \land (Q \vee \lnot P)] $
+    \[
+    \begin{array}{c|c|c|c|c|c}
+    P & Q & \neg P & Q \vee \neg P & P \land (Q \vee \neg P) &
+    \neg[P \land (Q \vee \neg P)] \\ \hline
+    T & T & F & T & T & F \\
+    T & F & F & F & F & T \\
+    F & T & T & T & F & T \\
+    F & F & T & T & F & T
+    \end{array}
+    \]
+
+    \part $(P \vee Q) \land (\lnot P \vee R)$ 
+    \[
+    \begin{array}{c|c|c|c|c|c}
+    P & Q & R & P \vee Q & \neg P \vee R &
+    (P \vee Q) \land (\neg P \vee R) \\ \hline
+    T & T & T & T & T & T \\
+    T & T & F & T & F & F \\
+    T & F & T & T & T & T \\
+    T & F & F & T & F & F \\
+    F & T & T & T & T & T \\
+    F & T & F & T & T & T \\
+    F & F & T & F & T & F \\
+    F & F & F & F & T & F
+    \end{array}
+    \]
+    
+\end{parts}
+
+\question In this exercise we will use the symbol + to mean exclusive or. In other words, P + Q means “P or Q, but not both.”
+
+\begin{parts}
+    \part Make a truth table for $P + Q$.
+
+    \[
+    \begin{array}{c|c|c}
+    P & Q & P+Q \\ \hline
+    T & T & F \\
+    T & F & T \\
+    F & T & T \\
+    F & F & F
+    \end{array}
+    \]
+
+    \part  Find a formula using only the connectives $\land, \vee$, and ¬ that is
+equivalent to P + Q. Justify your answer with a truth table.
+
+    \[
+    \begin{array}{c|c|c|c|c|c}
+    P & Q & P+Q & \neg Q & P\land\neg Q &
+    \neg P\land Q \\ \hline
+    T & T & F & F & F & F \\
+    T & F & T & T & T & F \\
+    F & T & T & F & F & T \\
+    F & F & F & T & F & F
+    \end{array}
+    \]
+
+    \[
+    \begin{array}{c|c}
+    (P\land\neg Q)\lor(\neg P\land Q) & P+Q \\ \hline
+    F & F \\
+    T & T \\
+    T & T \\
+    F & F
+    \end{array}
+    \]
+    
+\end{parts}
+
+\question Find a formula using only the connectives $\land$ and $\lnot$ that is equivalent
+to P $\vee$ Q. Justify your answer with a truth table.
+    \begin{parts}
+        \part when can make it with demorgans law
+        \[
+        \begin{array}{c|c|c|c|c|c}
+        P & Q & P\vee Q & \neg P & \neg Q &
+        \neg(\neg P\land\neg Q) \\ \hline
+        T & T & T & F & F & T \\
+        T & F & T & F & T & T \\
+        F & T & T & T & F & T \\
+        F & F & F & T & T & F
+        \end{array}
+        \]
+
+    \end{parts}
+
+\question Some mathematicians write P $|$ Q to mean “P and Q are not both true.” (This connective is called nand, and is used in the study of circuits in computer science.) 
+
+\begin{parts}
+    \part 
+    \[
+    \begin{array}{c|c|c|c}
+    P & Q & P\land Q & P\mid Q=\neg(P\land Q) \\ \hline
+    T & T & T & F \\
+    T & F & F & T \\
+    F & T & F & T \\
+    F & F & F & T
+    \end{array}
+    \]
+\end{parts}
+
+\question Use truth tables to determine which of the following formulas are equivalent to each other
+\begin{parts}
+\part  $(P \land Q) \land (\lnot P \vee \lnot Q)$
+    \[
+    \begin{array}{c|c|c|c|c|c|c}
+    P & Q & \neg P & \neg Q & P \lor Q & \neg P \lor \neg Q & (P \lor Q) \land (\neg P \lor \neg Q) \\
+    \hline
+    T & T & F & F & T & F & F \\
+    T & F & F & T & T & T & T \\
+    F & T & T & F & T & T & T \\
+    F & F & T & T & F & T & F
+    \end{array}
+    \]
+\part $\lnot P \vee Q$
+    \[
+    \begin{array}{c|c|c|c}
+    P & Q & \neg P & \neg P\vee Q \\
+    \hline
+    T & T & F & T \\
+    T & F & F & F \\
+    F & T & T & T \\
+    F & F & T & T
+    \end{array}
+    \]
+\part $(P \vee \lnot Q) \land (Q \vee \lnot P)$ 
+    \[
+    \begin{array}{c|c|c|c|c|c|c}
+    P & Q & \neg P & \neg Q & P\vee\neg Q & Q\vee\neg P & (P\vee\neg Q)\land(Q\vee\neg P) \\
+    \hline
+    T & T & F & F & T & T & T \\
+    T & F & F & T & T & F & F \\
+    F & T & T & F & F & T & F \\
+    F & F & T & T & T & T & T
+    \end{array}
+    \]
+\part $\lnot (P \vee Q)$
+    \[
+    \begin{array}{c|c|c|c}
+    P & Q & P\vee Q & \neg(P\vee Q) \\
+    \hline
+    T & T & T & F \\
+    T & F & T & F \\
+    F & T & T & F \\
+    F & F & F & T
+    \end{array}
+    \]
+\part $(Q \land P) \vee \lnot P$
+    \[
+    \begin{array}{c|c|c|c|c}
+    P & Q & Q\land P & \neg P & (Q\land P)\lor\neg P \\
+    \hline
+    T & T & T & F & T \\
+    T & F & F & F & F \\
+    F & T & F & T & T \\
+    F & F & F & T & T
+    \end{array}
+    \]
+
+(A) and (C) are equal and (B) and (E) and (D) is unique 
+\end{parts}
+\end{questions}
+\end{document}
