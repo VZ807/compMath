@@ -50,7 +50,6 @@ module Equality where
     subst C refl cx = cx 
 
     ------------------------------------------------------
-
     -- Tools for Equational Reasoning 
     ------------------------------------------------------
     -- These are to help us write proofs in Agda that involve
