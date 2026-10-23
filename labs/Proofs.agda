@@ -103,11 +103,7 @@ curry f a b = f (pair a b)
 -- Exercise 6 : Uncurrying
 -- Turn a curried function into a function on pairs. Split on ab.
 uncurry : {A B C : Set} → (A → B → C) → A × B → C
-<<<<<<< Updated upstream
-uncurry f ab = {! !}
-=======
 uncurry f (pair x x₁) = f x x₁
->>>>>>> Stashed changes
 
 -- Exercise 7 : Uncurry after curry
 -- Start with a function on pairs. Currying and then uncurrying it should
@@ -115,23 +111,13 @@ uncurry f (pair x x₁) = f x x₁
 -- Split on ab so that uncurry can compute, then prove the equality.
 uncurry-curry : {A B C : Set} → (f : A × B → C) → (ab : A × B) →
                 uncurry (curry f) ab ≡ f ab
-<<<<<<< Updated upstream
-uncurry-curry f ab = {! !}
-=======
 uncurry-curry f (pair x x₁) = refl
->>>>>>> Stashed changes
 
 -- Exercise 8 : Curry after uncurry
 -- Start with a curried function and apply both conversions in the other
 -- order. Normalize the left-hand side: what happens to the pair?
-<<<<<<< Updated upstream
-curry-uncurry : {A B C : Set} → (f : A → B → C) → (a : A) → (b : B) →
-                curry (uncurry f) a b ≡ f a b
-curry-uncurry f a b = {! !}
-=======
 curry-uncurry : {A B C : Set} → (f : A → B → C) → (a : A) → (b : B) → curry (uncurry f) a b ≡ f a b
 curry-uncurry f a b = refl
->>>>>>> Stashed changes
 
 -- These equalities compare results on each input (pointwise equality).
 -- We do not need an axiom saying that functions equal on all inputs are
@@ -162,20 +148,12 @@ and-intro a b = pair a b
 -- Exercise 11 : AND elimination
 -- Split on evidence to extract the proof of A.
 and-left : {A B : Set} → A × B → A
-<<<<<<< Updated upstream
-and-left evidence = {! !}
-=======
 and-left (pair x x₁) = x
->>>>>>> Stashed changes
 
 -- Exercise 12 : AND elimination on the right
 -- Split on evidence to extract the proof of B.
 and-right : {A B : Set} → A × B → B
-<<<<<<< Updated upstream
-and-right evidence = {! !}
-=======
 and-right (pair x x₁) = x₁
->>>>>>> Stashed changes
 
 -- Exercise 13 : OR introduction
 or-right : {A B : Set} → B → A ⊎ B
@@ -189,12 +167,8 @@ or-left a = left a
 -- Exercise 15 : OR elimination (proof by cases)
 -- Split on evidence. In each branch, use the appropriate implication.
 or-elim : {A B C : Set} → (A → C) → (B → C) → A ⊎ B → C
-<<<<<<< Updated upstream
-or-elim from-a from-b evidence = {! !}
-=======
 or-elim from-a from-b (left x) = from-a x
 or-elim from-a from-b (right x) = from-b x
->>>>>>> Stashed changes
 
 -- Exercise 16 : NOT and implication (contraposition)
 -- Given A → B and ¬ B, construct ¬ A. This direction is constructive.
@@ -219,23 +193,15 @@ contrapositive implies not-b a = not-b (implies a)
 -- An absurd clause has no right-hand side. This is elimination of the
 -- empty type, not a way to create an actual contradiction.
 ex-falso : {A : Set} → ⊥ → A
-<<<<<<< Updated upstream
-ex-falso impossible = {! !}
-=======
 ex-falso ()
->>>>>>> Stashed changes
 
 -- Exercise 18 : LEM implies double-negation elimination for a given A
 -- Revisit the earlier discussion: suppose someone supplies A OR ¬ A.
 -- Split on choice. Return the A proof in one branch; in the other branch,
 -- apply not-not-a to the refutation and eliminate the resulting ⊥.
 lem-implies-dne : {A : Set} → A ⊎ (¬ A) → ¬ (¬ A) → A
-<<<<<<< Updated upstream
-lem-implies-dne choice not-not-a = {! !}
-=======
 lem-implies-dne (left x) not-not-a = x
 lem-implies-dne (right x) not-not-a = ex-falso (not-not-a x)
->>>>>>> Stashed changes
 
 -- Inequality is a refutation of equality, not a Boolean comparison.
 _≠_ : {A : Set} → A → A → Set
@@ -256,12 +222,8 @@ data Dec (A : Set) : Set where
 -- Split on decision and convert its evidence to the appropriate OR branch.
 -- This gives LEM for propositions with a decision, not for arbitrary types.
 decidable-lem : {A : Set} → Dec A → A ⊎ (¬ A)
-<<<<<<< Updated upstream
-decidable-lem decision = {! !}
-=======
 decidable-lem (yes x) = left x
 decidable-lem (no x) = right x
->>>>>>> Stashed changes
 
 -- Reflection: What evidence do functions, pairs, and tagged alternatives
 -- carry? Why does a decision for a proposition allow classical reasoning
